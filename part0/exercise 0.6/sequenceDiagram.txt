@@ -1,0 +1,17 @@
+sequenceDiagram
+    participant browser
+    participant server
+
+    Note right of browser: document.getElementById('notes_form') called for reference/event handler
+
+    Note right of browser: e.preventDefault() called to prevent new GET request
+
+    Note right of browser: notes.push(note) called to add the new note to the notes list
+
+    Note right of browser: notes list rerendered
+
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+    activate browser
+    browser-->>server: New note ({content: str, date: str(datetime)})
+    deactivate browser
+
